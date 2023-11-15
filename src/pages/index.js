@@ -3,10 +3,12 @@ import { fetchBooks } from "./api/hello";
 import { Row, Col } from "antd";
 import BookCard from "@/components/Card";
 import BookCardSkeleton from "@/components/Card/skeleton";
+import { useRouter } from "next/router";
 
 export default function Home() {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const getBooks = async () => {
     setLoading(true);
@@ -37,7 +39,10 @@ export default function Home() {
         ? renderSkeletons()
         : books.map((book) => (
             <Col key={book.id}>
-              <BookCard book={book} />
+              <BookCard
+                book={book}
+                detail={() => router.push(`books/${book.id}`)}
+              />
             </Col>
           ))}
     </Row>
