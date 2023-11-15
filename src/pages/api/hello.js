@@ -17,3 +17,9 @@ export const fetchBook = async (id) => {
   const response = await axiosInstance.get(`${id}`);
   return response.data;
 };
+
+// Delete apisi
+export const deleteBook = async (id) => {
+  const response = await axiosInstance.delete(`${id}`);
+  return response.data;
+};

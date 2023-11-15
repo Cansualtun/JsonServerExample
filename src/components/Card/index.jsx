@@ -2,7 +2,7 @@ import React from "react";
 import { Card, Button, Row } from "antd";
 
 const { Meta } = Card;
-const BookCard = ({ book, detail }) => {
+const BookCard = ({ book, detail, remove }) => {
   return (
     <Card
       hoverable
@@ -15,6 +15,9 @@ const BookCard = ({ book, detail }) => {
       <Row style={{ gap: 10, marginTop: 10 }}>
         <Button type="primary" onClick={detail}>
           Learn More
+        </Button>
+        <Button type="primary" danger onClick={remove}>
+          Delete
         </Button>
       </Row>
     </Card>
