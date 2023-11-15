@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchBooks } from "./api/hello";
+import { deleteBook, fetchBooks } from "./api/hello";
 import { Row, Col } from "antd";
 import BookCard from "@/components/Card";
 import BookCardSkeleton from "@/components/Card/skeleton";
@@ -33,6 +33,11 @@ export default function Home() {
       </Col>
     ));
   };
+  // Kitabı silmek için çalıştırdığımız fonksiyon
+  const handleDelete = async (id) => {
+    await deleteBook(id);
+    setBooks(books.filter((book) => book.id !== id));
+  };
   return (
     <Row gutter={[16, 16]}>
       {loading
@@ -42,6 +47,9 @@ export default function Home() {
               <BookCard
                 book={book}
                 detail={() => router.push(`books/${book.id}`)}
+                remove={() => {
+                  handleDelete(book.id);
+                }}
               />
             </Col>
           ))}

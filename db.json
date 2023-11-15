@@ -1,15 +1,6 @@
 {
   "books": [
     {
-      "id": 3,
-      "title": "The Great Gatsby",
-      "author": "F. Scott Fitzgerald",
-      "price": 12.99,
-      "currency": "USD",
-      "description": "A novel set in the Jazz Age on Long Island, it follows the life and times of Jay Gatsby and his pursuit of the American Dream.",
-      "imageUrl": "https://picsum.photos/id/237/200/300"
-    },
-    {
       "id": 4,
       "title": "1984",
       "author": "George Orwell",
