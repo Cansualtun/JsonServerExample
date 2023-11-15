@@ -11,3 +11,9 @@ export const fetchBooks = async () => {
   const response = await axiosInstance.get();
   return response.data;
 };
+
+// Kitap detayi için
+export const fetchBook = async (id) => {
+  const response = await axiosInstance.get(`${id}`);
+  return response.data;
+};

@@ -1,8 +1,8 @@
 import React from "react";
-import { Card } from "antd";
+import { Card, Button, Row } from "antd";
 
 const { Meta } = Card;
-const BookCard = ({ book }) => {
+const BookCard = ({ book, detail }) => {
   return (
     <Card
       hoverable
@@ -12,6 +12,11 @@ const BookCard = ({ book }) => {
       cover={<img alt={book.title} src={book.imageUrl} />}
     >
       <Meta title={book.title} description={book.description} />
+      <Row style={{ gap: 10, marginTop: 10 }}>
+        <Button type="primary" onClick={detail}>
+          Learn More
+        </Button>
+      </Row>
     </Card>
   );
 };
