@@ -1,0 +1,94 @@
+{
+    "books": [
+      {
+        "id": 3,
+        "title": "The Great Gatsby",
+        "author": "F. Scott Fitzgerald",
+        "price": 12.99,
+        "currency": "USD",
+        "description": "A novel set in the Jazz Age on Long Island, it follows the life and times of Jay Gatsby and his pursuit of the American Dream.",
+        "imageUrl": "https://picsum.photos/id/237/200/300"
+      },
+      {
+        "id": 4,
+        "title": "1984",
+        "author": "George Orwell",
+        "price": 14.99,
+        "currency": "USD",
+        "description": "A dystopian social science fiction novel and a cautionary tale of a totalitarian regime based on propaganda, surveillance, and censorship.",
+        "imageUrl": "https://picsum.photos/id/238/200/300"
+      },
+      {
+        "id": 5,
+        "title": "To Kill a Mockingbird",
+        "author": "Harper Lee",
+        "price": 18.99,
+        "currency": "USD",
+        "description": "A deeply moving novel centered around themes of racial injustice and moral growth in the American South.",
+        "imageUrl": "https://picsum.photos/id/239/200/300"
+      },
+      {
+        "id": 6,
+        "title": "The Catcher in the Rye",
+        "author": "J.D. Salinger",
+        "price": 10.99,
+        "currency": "USD",
+        "description": "A classic novel that explores themes of teenage angst and alienation through the eyes of protagonist Holden Caulfield.",
+        "imageUrl": "https://picsum.photos/id/240/200/300"
+      },
+      {
+        "id": 7,
+        "title": "Pride and Prejudice",
+        "author": "Jane Austen",
+        "price": 15.99,
+        "currency": "USD",
+        "description": "A romantic novel of manners that depicts the emotional development of protagonist Elizabeth Bennet, who learns about the repercussions of hasty judgments.",
+        "imageUrl": "https://picsum.photos/id/241/200/300"
+      },
+      {
+        "id": 8,
+        "title": "Brave New World",
+        "author": "Aldous Huxley",
+        "price": 13.99,
+        "currency": "USD",
+        "description": "A dystopian novel presenting a future society driven by technological advancements, leading to lost individuality.",
+        "imageUrl": "https://picsum.photos/id/242/200/300"
+      },
+      {
+        "id": 9,
+        "title": "Moby Dick",
+        "author": "Herman Melville",
+        "price": 17.99,
+        "currency": "USD",
+        "description": "An epic sea adventure of Captain Ahab's obsession with capturing the giant white whale, Moby Dick.",
+        "imageUrl": "https://picsum.photos/id/243/200/300"
+      },
+      {
+        "id": 10,
+        "title": "War and Peace",
+        "author": "Leo Tolstoy",
+        "price": 20.99,
+        "currency": "USD",
+        "description": "A sweeping novel that combines history, philosophy, and fiction to depict Russian society during the Napoleonic Era.",
+        "imageUrl": "https://picsum.photos/id/244/200/300"
+      },
+      {
+        "id": 11,
+        "title": "The Alchemist",
+        "author": "Paulo Coelho",
+        "price": 16.99,
+        "currency": "USD",
+        "description": "A philosophical story that explores the theme of finding one's destiny or purpose in life.",
+        "imageUrl": "https://picsum.photos/id/245/200/300"
+      },
+      {
+        "id": 12,
+        "title": "Animal Farm",
+        "author": "George Orwell",
+        "price": 11.99,
+        "currency": "USD",
+        "description": "A satirical allegorical novella reflecting events leading up to the Russian Revolution and then on into the Stalinist era of the Soviet Union.",
+        "imageUrl": "https://picsum.photos/id/246/200/300"
+      }
+    ]
+  }
