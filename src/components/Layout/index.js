@@ -7,6 +7,7 @@ import {
   VideoCameraOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, Button, theme } from "antd";
+import Link from "next/link";
 const { Header, Sider, Content } = Layout;
 
 const BaseLayout = ({ children }) => {
@@ -15,31 +16,21 @@ const BaseLayout = ({ children }) => {
     token: { colorBgContainer },
   } = theme.useToken();
   return (
-    <Layout>
+    <Layout style={{ minHeight: "100vh" }}>
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="demo-logo-vertical" />
-        <Menu
-          theme="dark"
-          mode="inline"
-          defaultSelectedKeys={["1"]}
-          items={[
-            {
-              key: "1",
-              icon: <UserOutlined />,
-              label: "nav 1",
-            },
-            {
-              key: "2",
-              icon: <VideoCameraOutlined />,
-              label: "nav 2",
-            },
-            {
-              key: "3",
-              icon: <UploadOutlined />,
-              label: "nav 3",
-            },
-          ]}
-        />
+        <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
+          <Menu.Item key="1">
+            <Link href="/">
+              <p>Home</p>
+            </Link>
+          </Menu.Item>
+          <Menu.Item key="2">
+            <Link href="/books/add-book">
+              <p>Add Book</p>
+            </Link>
+          </Menu.Item>
+        </Menu>
       </Sider>
       <Layout>
         <Header
