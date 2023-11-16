@@ -23,3 +23,8 @@ export const deleteBook = async (id) => {
   const response = await axiosInstance.delete(`${id}`);
   return response.data;
 };
+
+export const updateBook=async(id,updatedBook)=>{
+  const response=await axiosInstance.put(`${id}`,updatedBook);
+  return response.data;
+}

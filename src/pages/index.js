@@ -50,6 +50,7 @@ export default function Home() {
                 remove={() => {
                   handleDelete(book.id);
                 }}
+                update={()=>router.push(`/books/update-book/${book.id}`)}
               />
             </Col>
           ))}
