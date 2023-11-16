@@ -5,7 +5,7 @@ import BookCard from "@/components/Card";
 import BookCardSkeleton from "@/components/Card/skeleton";
 import { useRouter } from "next/router";
 
-export default function Home() {
+export default function Home({ searchResults }) {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -40,19 +40,19 @@ export default function Home() {
   };
   return (
     <Row gutter={[16, 16]}>
-      {loading
-        ? renderSkeletons()
-        : books.map((book) => (
-            <Col key={book.id}>
-              <BookCard
-                book={book}
-                detail={() => router.push(`books/${book.id}`)}
-                remove={() => {
-                  handleDelete(book.id);
-                }}
-              />
-            </Col>
-          ))}
-    </Row>
+    {loading
+      ? renderSkeletons()
+      : (searchResults.length > 0 ? searchResults : books).map((book) => (
+          <Col key={book.id}>
+            <BookCard
+              book={book}
+              detail={() => router.push(`books/${book.id}`)}
+              remove={() => {
+                handleDelete(book.id);
+              }}
+            />
+          </Col>
+        ))}
+  </Row>
   );
 }
