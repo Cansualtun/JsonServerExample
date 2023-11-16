@@ -5,7 +5,7 @@ import BookCard from "@/components/Card";
 import BookCardSkeleton from "@/components/Card/skeleton";
 import { useRouter } from "next/router";
 
-export default function Home() {
+export default function Home({ searchResults }) {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(false);
   const router = useRouter();

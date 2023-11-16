@@ -6,15 +6,34 @@ import {
   UserOutlined,
   VideoCameraOutlined,
 } from "@ant-design/icons";
-import { Layout, Menu, Button, theme } from "antd";
+import { Layout, Menu, Button, theme ,Input} from "antd";
 import Link from "next/link";
 const { Header, Sider, Content } = Layout;
 
 const BaseLayout = ({ children }) => {
   const [collapsed, setCollapsed] = useState(false);
+  const [searchResults, setSearchResults] = useState([]);
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+
+  const handleSearch = async (query) => {
+    try {
+      const response = await fetch("http://localhost:3001/books");
+      if (!response.ok) {
+        throw new Error("Veriler alınırken hata oluştu.");
+      }
+  
+      const data = await response.json();
+      const filteredData = data.filter((book) =>
+        book.title.toLowerCase().includes(query.toLowerCase())
+      );
+      setSearchResults(filteredData);
+    } catch (error) {
+      console.error("Veriler alınırken hata oluştu.", error);
+    }
+  };
+
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Sider trigger={null} collapsible collapsed={collapsed}>
@@ -37,18 +56,30 @@ const BaseLayout = ({ children }) => {
           style={{
             padding: 0,
             background: colorBgContainer,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
           }}
         >
-          <Button
-            type="text"
-            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-            onClick={() => setCollapsed(!collapsed)}
-            style={{
-              fontSize: "16px",
-              width: 64,
-              height: 64,
-            }}
-          />
+          <div>
+            <Button
+              type="text"
+              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+              onClick={() => setCollapsed(!collapsed)}
+              style={{
+                fontSize: "16px",
+                width: 64,
+                height: 64,
+ }}
+            />
+          </div>
+          <div>
+            <Input.Search
+              placeholder="Search Books"
+              onSearch={(value) => handleSearch(value)}
+              style={{ width: 200 }}
+            />
+          </div>
         </Header>
         <Content
           style={{
@@ -58,7 +89,7 @@ const BaseLayout = ({ children }) => {
             background: colorBgContainer,
           }}
         >
-          {children}
+          {React.cloneElement(children, { searchResults })}
         </Content>
       </Layout>
     </Layout>
