@@ -1,15 +1,6 @@
 {
   "books": [
     {
-      "id": 4,
-      "title": "1984",
-      "author": "George Orwell",
-      "price": 14.99,
-      "currency": "USD",
-      "description": "A dystopian social science fiction novel and a cautionary tale of a totalitarian regime based on propaganda, surveillance, and censorship.",
-      "imageUrl": "https://picsum.photos/id/238/200/300"
-    },
-    {
       "id": 5,
       "title": "To Kill a Mockingbird",
       "author": "Harper Lee",
@@ -87,6 +78,13 @@
       "price": 120,
       "description": "bu bir test açıklamasıdır",
       "id": 13
+    },
+    {
+      "title": "merve alpay",
+      "author": "merveeee",
+      "price": 55,
+      "description": "cdcdckmdmckdcdö",
+      "id": 14
     }
   ]
 }
