@@ -2,12 +2,13 @@ import React from "react";
 import { Card, Button, Row } from "antd";
 
 const { Meta } = Card;
-const BookCard = ({ book, detail, remove }) => {
+const BookCard = ({ book, detail, remove,update }) => {
   return (
     <Card
       hoverable
       style={{
-        width: 240,
+        width: 280,
+        height:700
       }}
       cover={<img alt={book.title} src={book.imageUrl} />}
     >
@@ -18,6 +19,9 @@ const BookCard = ({ book, detail, remove }) => {
         </Button>
         <Button type="primary" danger onClick={remove}>
           Delete
+        </Button>
+        <Button style={{backgroundColor:"orange", color:"white"}}  onClick={update}>
+          Update
         </Button>
       </Row>
     </Card>

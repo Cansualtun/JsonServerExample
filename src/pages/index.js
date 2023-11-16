@@ -40,19 +40,20 @@ export default function Home({ searchResults }) {
   };
   return (
     <Row gutter={[16, 16]}>
-    {loading
-      ? renderSkeletons()
-      : (searchResults.length > 0 ? searchResults : books).map((book) => (
-          <Col key={book.id}>
-            <BookCard
-              book={book}
-              detail={() => router.push(`books/${book.id}`)}
-              remove={() => {
-                handleDelete(book.id);
-              }}
-            />
-          </Col>
-        ))}
-  </Row>
+      {loading
+        ? renderSkeletons()
+        : books.map((book) => (
+            <Col key={book.id}>
+              <BookCard
+                book={book}
+                detail={() => router.push(`books/${book.id}`)}
+                remove={() => {
+                  handleDelete(book.id);
+                }}
+                update={()=>router.push(`/books/update-book/${book.id}`)}
+              />
+            </Col>
+          ))}
+    </Row>
   );
 }
