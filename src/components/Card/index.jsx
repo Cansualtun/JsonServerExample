@@ -51,8 +51,7 @@ BookCard.propTypes = {
   
   removeVisible: PropTypes.bool.isRequired,
   detailVisible: PropTypes.bool.isRequired,
-  detail: PropTypes.func,
-  remove: PropTypes.func,
+
 };
 
 BookCard.defaultProps = {
