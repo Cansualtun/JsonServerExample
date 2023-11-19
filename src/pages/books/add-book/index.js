@@ -1,19 +1,10 @@
 import { Typography, Form, Input, Button, Select } from "antd";
 import { useFormik } from "formik";
 import { useRouter } from "next/router";
-import * as Yup from 'yup';
 import axios from "axios";
 import { Option } from "antd/es/mentions";
-const { Title } = Typography;
 
-const BookSchema = Yup.object().shape({
-  title: Yup.string().required('Kitap adı zorunlu'),
-  author: Yup.string().required('Yazar adı zorunlu'),
-  price: Yup.number()
-    .positive('Pozitif Fiyat zorunlu')
-    .required('Fiyat Zorunlu'),
-  description: Yup.string().required('Açıklama Zorunlu'),
-});
+const { Title } = Typography;
 
 const AddBook = () => {
   const router = useRouter();
@@ -22,7 +13,7 @@ const AddBook = () => {
     initialValues: addBookFormInitialValue,
     validationSchema: addBookValidationSchema,
     onSubmit: async (values) => {
-      book=bookDetail(values);
+      book = bookDetail(values);
       try {
         await axios.post("http://localhost:3001/books", book);
         router.push("/");
@@ -50,7 +41,7 @@ const AddBook = () => {
       <Form onFinish={formik.handleSubmit}>
         <Form.Item
           name="title"
-          validateStatus={formik.errors.title ? 'error' : ''}
+          validateStatus={formik.errors.title ? "error" : ""}
           help={formik.errors.title}
         >
           <Input
@@ -62,7 +53,7 @@ const AddBook = () => {
         </Form.Item>
         <Form.Item
           name="author"
-          validateStatus={formik.errors.author ? 'error' : ''}
+          validateStatus={formik.errors.author ? "error" : ""}
           help={formik.errors.author}
         >
           <Input
@@ -74,7 +65,7 @@ const AddBook = () => {
         </Form.Item>
         <Form.Item
           name="price"
-          validateStatus={formik.errors.price ? 'error' : ''}
+          validateStatus={formik.errors.price ? "error" : ""}
           help={formik.errors.price}
         >
           <Input
@@ -85,23 +76,17 @@ const AddBook = () => {
             onChange={formik.handleChange}
           />
         </Form.Item>
-        <Form.Item
-          name="description"
-          validateStatus={formik.errors.description ? 'error' : ''}
-          help={formik.errors.description}
-        >
-        name="currency"
-      >
-        <Select
-          placeholder="Select an option"
-          value={formik.values.currency}
-          onChange={(value) => formik.setFieldValue('currency', value)}
-        >
-          <Option value="TL">TL</Option>
-          <Option value="USD">USD</Option>
-          <Option value="EUR">EUR</Option>
-        </Select>
-      </Form.Item>
+        <Form.Item>
+          <Select
+            placeholder="Select an option"
+            value={formik.values.currency}
+            onChange={(value) => formik.setFieldValue("currency", value)}
+          >
+            <Option value="TL">TL</Option>
+            <Option value="USD">USD</Option>
+            <Option value="EUR">EUR</Option>
+          </Select>
+        </Form.Item>
         <Form.Item name="description">
           <Input
             name="description"

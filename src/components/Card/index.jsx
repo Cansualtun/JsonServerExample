@@ -4,7 +4,14 @@ import PropTypes from "prop-types";
 
 const { Meta } = Card;
 
-const BookCard = ({ book, removeVisible, detailVisible, detail, remove }) => {
+const BookCard = ({
+  book,
+  removeVisible,
+  detailVisible,
+  detail,
+  remove,
+  update,
+}) => {
   const handleDetail = () => {
     if (detailVisible) {
       detail();
@@ -22,7 +29,7 @@ const BookCard = ({ book, removeVisible, detailVisible, detail, remove }) => {
       hoverable
       style={{
         width: 280,
-        height:700
+        height: 700,
       }}
       cover={<img alt={book.title} src={book.imageUrl} />}
     >
@@ -30,15 +37,18 @@ const BookCard = ({ book, removeVisible, detailVisible, detail, remove }) => {
       <Row style={{ gap: 10, marginTop: 10 }}>
         {detailVisible && (
           <Button type="primary" onClick={handleDetail}>
-            Daha Fazla Bilgi
+            Learn More
           </Button>
         )}
         {removeVisible && (
           <Button type="primary" danger onClick={handleRemove}>
-            Sil
+            Delete
           </Button>
         )}
-        <Button style={{backgroundColor:"orange", color:"white"}}  onClick={update}>
+        <Button
+          style={{ backgroundColor: "orange", color: "white" }}
+          onClick={update}
+        >
           Update
         </Button>
       </Row>
@@ -52,10 +62,9 @@ BookCard.propTypes = {
     imageUrl: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
   }).isRequired,
-  
+
   removeVisible: PropTypes.bool.isRequired,
   detailVisible: PropTypes.bool.isRequired,
-
 };
 
 BookCard.defaultProps = {
