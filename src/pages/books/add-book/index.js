@@ -1,13 +1,19 @@
 import { Typography, Form, Input, Button, Select } from "antd";
 import { useFormik } from "formik";
 import { useRouter } from "next/router";
-import {
-  addBookFormInitialValue,
-  addBookValidationSchema,
-} from "@/validations/addBook";
+import * as Yup from 'yup';
 import axios from "axios";
 import { Option } from "antd/es/mentions";
 const { Title } = Typography;
+
+const BookSchema = Yup.object().shape({
+  title: Yup.string().required('Kitap adı zorunlu'),
+  author: Yup.string().required('Yazar adı zorunlu'),
+  price: Yup.number()
+    .positive('Pozitif Fiyat zorunlu')
+    .required('Fiyat Zorunlu'),
+  description: Yup.string().required('Açıklama Zorunlu'),
+});
 
 const AddBook = () => {
   const router = useRouter();
@@ -22,9 +28,12 @@ const AddBook = () => {
         router.push("/");
       } catch (error) {
         console.error("Kitap eklenirken bir hata oluştu", error);
+      } finally {
+        setSubmitting(false);
       }
     },
   });
+
   const bookDetail = (values) => {
     return {
       title: values.title || "",
@@ -39,7 +48,11 @@ const AddBook = () => {
     <>
       <Title level={2}>Add Book</Title>
       <Form onFinish={formik.handleSubmit}>
-        <Form.Item name="title">
+        <Form.Item
+          name="title"
+          validateStatus={formik.errors.title ? 'error' : ''}
+          help={formik.errors.title}
+        >
           <Input
             name="title"
             placeholder="Title"
@@ -47,7 +60,11 @@ const AddBook = () => {
             onChange={formik.handleChange}
           />
         </Form.Item>
-        <Form.Item name="author">
+        <Form.Item
+          name="author"
+          validateStatus={formik.errors.author ? 'error' : ''}
+          help={formik.errors.author}
+        >
           <Input
             name="author"
             placeholder="Author"
@@ -55,7 +72,11 @@ const AddBook = () => {
             onChange={formik.handleChange}
           />
         </Form.Item>
-        <Form.Item name="price">
+        <Form.Item
+          name="price"
+          validateStatus={formik.errors.price ? 'error' : ''}
+          help={formik.errors.price}
+        >
           <Input
             name="price"
             type="number"
@@ -65,6 +86,10 @@ const AddBook = () => {
           />
         </Form.Item>
         <Form.Item
+          name="description"
+          validateStatus={formik.errors.description ? 'error' : ''}
+          help={formik.errors.description}
+        >
         name="currency"
       >
         <Select

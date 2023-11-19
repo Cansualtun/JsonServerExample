@@ -19,7 +19,8 @@ const BooksDetail = () => {
   }, [id]);
   return (
     <>
-      <BookCard book={bookDetail} />
+    
+      <BookCard book={bookDetail} detailVisible={false}/>
     </>
   );
 };
