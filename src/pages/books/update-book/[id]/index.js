@@ -1,35 +1,29 @@
 import { Typography, Form, Input, Button, Select } from "antd";
 import { useFormik } from "formik";
 import { useRouter } from "next/router";
-import * as Yup from 'yup';
+
 import axios from "axios";
+import {
+  updateBookFormInitialValue,
+  updateBookValidationSchema,
+} from "@/validations/updateBook";
 import { Option } from "antd/es/mentions";
 const { Title } = Typography;
 
-const BookSchema = Yup.object().shape({
-  title: Yup.string().required('Kitap adı zorunlu'),
-  author: Yup.string().required('Yazar adı zorunlu'),
-  price: Yup.number()
-    .positive('Pozitif Fiyat zorunlu')
-    .required('Fiyat Zorunlu'),
-  description: Yup.string().required('Açıklama Zorunlu'),
-});
-
-const AddBook = () => {
-  const router = useRouter();
+const UpdateBook = () => {
   let book = {};
+  const router = useRouter();
+  const { id } = router.query;
   const formik = useFormik({
-    initialValues: addBookFormInitialValue,
-    validationSchema: addBookValidationSchema,
+    initialValues: updateBookFormInitialValue,
+    validationSchema: updateBookValidationSchema,
     onSubmit: async (values) => {
-      book=bookDetail(values);
+      book = bookDetail(values);
       try {
-        await axios.post("http://localhost:3001/books", book);
+        await axios.put(`http://localhost:3001/books/${id}`, book);
         router.push("/");
       } catch (error) {
-        console.error("Kitap eklenirken bir hata oluştu", error);
-      } finally {
-        setSubmitting(false);
+        console.error("Kitap güncellenirken bir hata oluştu", error);
       }
     },
   });
@@ -46,13 +40,9 @@ const AddBook = () => {
   };
   return (
     <>
-      <Title level={2}>Add Book</Title>
+      <Title level={2}>Update Book</Title>
       <Form onFinish={formik.handleSubmit}>
-        <Form.Item
-          name="title"
-          validateStatus={formik.errors.title ? 'error' : ''}
-          help={formik.errors.title}
-        >
+        <Form.Item name="title">
           <Input
             name="title"
             placeholder="Title"
@@ -60,11 +50,7 @@ const AddBook = () => {
             onChange={formik.handleChange}
           />
         </Form.Item>
-        <Form.Item
-          name="author"
-          validateStatus={formik.errors.author ? 'error' : ''}
-          help={formik.errors.author}
-        >
+        <Form.Item name="author">
           <Input
             name="author"
             placeholder="Author"
@@ -72,11 +58,18 @@ const AddBook = () => {
             onChange={formik.handleChange}
           />
         </Form.Item>
-        <Form.Item
-          name="price"
-          validateStatus={formik.errors.price ? 'error' : ''}
-          help={formik.errors.price}
-        >
+        <Form.Item name="currency">
+          <Select
+            placeholder="Select an option"
+            value={formik.values.currency}
+            onChange={(value) => formik.setFieldValue("currency", value)}
+          >
+            <Option value="TL">TL</Option>
+            <Option value="USD">USD</Option>
+            <Option value="EUR">EUR</Option>
+          </Select>
+        </Form.Item>
+        <Form.Item name="price">
           <Input
             name="price"
             type="number"
@@ -85,23 +78,6 @@ const AddBook = () => {
             onChange={formik.handleChange}
           />
         </Form.Item>
-        <Form.Item
-          name="description"
-          validateStatus={formik.errors.description ? 'error' : ''}
-          help={formik.errors.description}
-        >
-        name="currency"
-      >
-        <Select
-          placeholder="Select an option"
-          value={formik.values.currency}
-          onChange={(value) => formik.setFieldValue('currency', value)}
-        >
-          <Option value="TL">TL</Option>
-          <Option value="USD">USD</Option>
-          <Option value="EUR">EUR</Option>
-        </Select>
-      </Form.Item>
         <Form.Item name="description">
           <Input
             name="description"
@@ -110,6 +86,7 @@ const AddBook = () => {
             onChange={formik.handleChange}
           />
         </Form.Item>
+
         <Form.Item name="imageUrl">
           <Input
             name="imageUrl"
@@ -118,13 +95,14 @@ const AddBook = () => {
             onChange={formik.handleChange}
           />
         </Form.Item>
+
         <Form.Item>
           <Button
             type="primary"
             htmlType="submit"
             loading={formik.isSubmitting}
           >
-            Add Book
+            Update Book
           </Button>
         </Form.Item>
       </Form>
@@ -132,4 +110,4 @@ const AddBook = () => {
   );
 };
 
-export default AddBook;
+export default UpdateBook;

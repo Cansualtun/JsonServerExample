@@ -21,7 +21,8 @@ const BookCard = ({ book, removeVisible, detailVisible, detail, remove }) => {
     <Card
       hoverable
       style={{
-        width: 240,
+        width: 280,
+        height:700
       }}
       cover={<img alt={book.title} src={book.imageUrl} />}
     >
@@ -37,6 +38,9 @@ const BookCard = ({ book, removeVisible, detailVisible, detail, remove }) => {
             Sil
           </Button>
         )}
+        <Button style={{backgroundColor:"orange", color:"white"}}  onClick={update}>
+          Update
+        </Button>
       </Row>
     </Card>
   );

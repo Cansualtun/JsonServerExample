@@ -61,7 +61,7 @@
       "price": 16.99,
       "currency": "USD",
       "description": "A philosophical story that explores the theme of finding one's destiny or purpose in life.",
-      "imageUrl": "https://picsum.photos/id/245/200/300"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/TheAlchemist.jpg/330px-TheAlchemist.jpg"
     },
     {
       "id": 12,
@@ -85,6 +85,7 @@
       "price": 55,
       "description": "cdcdckmdmckdcdö",
       "id": 14
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Animal_Farm_-_1st_edition.jpg/330px-Animal_Farm_-_1st_edition.jpg"
     }
   ]
 }
