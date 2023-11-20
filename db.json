@@ -1,15 +1,6 @@
 {
   "books": [
     {
-      "id": 5,
-      "title": "To Kill a Mockingbird",
-      "author": "Harper Lee",
-      "price": 18.99,
-      "currency": "USD",
-      "description": "A deeply moving novel centered around themes of racial injustice and moral growth in the American South.",
-      "imageUrl": "https://picsum.photos/id/239/200/300"
-    },
-    {
       "id": 6,
       "title": "The Catcher in the Rye",
       "author": "J.D. Salinger",
@@ -17,15 +8,6 @@
       "currency": "USD",
       "description": "A classic novel that explores themes of teenage angst and alienation through the eyes of protagonist Holden Caulfield.",
       "imageUrl": "https://picsum.photos/id/240/200/300"
-    },
-    {
-      "id": 7,
-      "title": "Pride and Prejudice",
-      "author": "Jane Austen",
-      "price": 15.99,
-      "currency": "USD",
-      "description": "A romantic novel of manners that depicts the emotional development of protagonist Elizabeth Bennet, who learns about the repercussions of hasty judgments.",
-      "imageUrl": "https://picsum.photos/id/241/200/300"
     },
     {
       "id": 8,

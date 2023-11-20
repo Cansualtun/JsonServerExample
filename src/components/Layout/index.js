@@ -17,6 +17,10 @@ const BaseLayout = ({ children }) => {
     token: { colorBgContainer },
   } = theme.useToken();
 
+  const newColorBgContainer = '#73BA9B'
+  
+  
+
   const handleSearch = async (query) => {
     try {
       const response = await fetch("http://localhost:3001/books");
@@ -38,8 +42,8 @@ const BaseLayout = ({ children }) => {
     <Layout style={{ minHeight: "100vh" }}>
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="demo-logo-vertical" />
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
-          <Menu.Item key="1">
+        <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]} >
+          <Menu.Item key="1" >
             <Link href="/">
               <p>Home</p>
             </Link>
@@ -73,7 +77,7 @@ const BaseLayout = ({ children }) => {
  }}
             />
           </div>
-          <div>
+          <div style={{ marginTop: '30px' }}>
             <Input.Search
               placeholder="Search Books"
               onSearch={(value) => handleSearch(value)}
