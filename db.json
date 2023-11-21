@@ -28,15 +28,6 @@
       "imageUrl": "https://picsum.photos/id/243/200/300"
     },
     {
-      "id": 10,
-      "title": "War and Peace",
-      "author": "Leo Tolstoy",
-      "price": 20.99,
-      "currency": "USD",
-      "description": "A sweeping novel that combines history, philosophy, and fiction to depict Russian society during the Napoleonic Era.",
-      "imageUrl": "https://picsum.photos/id/244/200/300"
-    },
-    {
       "id": 11,
       "title": "The Alchemist",
       "author": "Paulo Coelho",
@@ -68,6 +59,35 @@
       "description": "cdcdckmdmckdcdö",
       "id": 14,
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Animal_Farm_-_1st_edition.jpg/330px-Animal_Farm_-_1st_edition.jpg"
+    },
+    {
+      "title": "Cumhuriyetin Doğuşu",
+      "author": "İlber Ortaylı",
+      "price": 120,
+      "currency": "TL",
+      "description": "deneme",
+      "imageUrl": "https://picsum.photos/id/237/200/300",
+      "id": 15
+    }
+  ],
+  "favorites": [
+    {
+      "id": 6,
+      "title": "The Catcher in the Rye",
+      "author": "J.D. Salinger",
+      "price": 10.99,
+      "currency": "USD",
+      "description": "A classic novel that explores themes of teenage angst and alienation through the eyes of protagonist Holden Caulfield.",
+      "imageUrl": "https://picsum.photos/id/240/200/300"
+    },
+    {
+      "id": 8,
+      "title": "Brave New World",
+      "author": "Aldous Huxley",
+      "price": 13.99,
+      "currency": "USD",
+      "description": "A dystopian novel presenting a future society driven by technological advancements, leading to lost individuality.",
+      "imageUrl": "https://picsum.photos/id/242/200/300"
     }
   ]
 }

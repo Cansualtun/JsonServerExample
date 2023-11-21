@@ -40,6 +40,11 @@ const BaseLayout = ({ children }) => {
               <p>Add Book</p>
             </Link>
           </Menu.Item>
+          <Menu.Item key="3">
+            <Link href="/favorites">
+              <p>Favorites</p>
+            </Link>
+          </Menu.Item>
         </Menu>
       </Sider>
       <Layout>
