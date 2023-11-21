@@ -11,6 +11,7 @@ const FavoritesPage = () => {
   // sayfanın içerisinde statei kullanabilmek için dispatch çağırdım
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.favorites.favorites);
+  
   const FavoriteList = async () => {
     try {
       const response = await axios.get("http://localhost:3001/favorites");

@@ -70,15 +70,5 @@
       "id": 15
     }
   ],
-  "favorites": [
-    {
-      "id": 8,
-      "title": "Brave New World",
-      "author": "Aldous Huxley",
-      "price": 13.99,
-      "currency": "USD",
-      "description": "A dystopian novel presenting a future society driven by technological advancements, leading to lost individuality.",
-      "imageUrl": "https://picsum.photos/id/242/200/300"
-    }
-  ]
+  "favorites": []
 }
