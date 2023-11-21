@@ -29,28 +29,33 @@ const BookCard = ({
       hoverable
       style={{
         width: 280,
-        height: 700,
+        height: 560,
+        
       }}
-      cover={<img alt={book.title} src={book.imageUrl} />}
+      cover={<img alt={book.title} src={book.imageUrl} style={{ width: '100%', height: '300px' }} />}
     >
       <Meta title={book.title} description={book.description} />
-      <Row style={{ gap: 10, marginTop: 10 }}>
+      <Row style={{ display:'flex', alignItems:'center', gap: 5, marginTop: 8 }}>
+        <div>
         {detailVisible && (
-          <Button type="primary" onClick={handleDetail}>
+          <Button type="primary" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gridColumnStart: 1, gridColumnEnd: 4  ,background:'#003049', color: '#FFFFFF' }} onClick={handleDetail}>
             Learn More
           </Button>
         )}
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gridAutoColumns: 'auto', gap: 5,}}>
         {removeVisible && (
-          <Button type="primary" danger onClick={handleRemove}>
+          <Button type="primary" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gridAutoColumns: 'auto',  background: '#d90429', color: '#FFFFFF' }} onClick={handleRemove} >
             Delete
           </Button>
         )}
         <Button
-          style={{ backgroundColor: "orange", color: "white" }}
-          onClick={update}
+          style={{ background: '#003E1F', color: '#FFFFFF' }}
+          onClick={update} 
         >
           Update
         </Button>
+        </div>
       </Row>
     </Card>
   );
