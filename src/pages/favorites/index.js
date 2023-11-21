@@ -45,7 +45,6 @@ const FavoritesPage = () => {
             book={favorite}
             removeVisible={false}
             favoriteVisible={false}
-            removeFavoriVisible={true}
             removeToFavorites={removeToFavorites}
           />
         </Col>

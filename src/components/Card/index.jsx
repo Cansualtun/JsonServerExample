@@ -13,7 +13,6 @@ const BookCard = ({
   update,
   favoriteVisible,
   addToFavorites,
-  removeFavoriVisible,
   removeToFavorites,
 }) => {
   const handleDetail = () => {
@@ -88,22 +87,19 @@ const BookCard = ({
           >
             Update
           </Button>
-          {favoriteVisible && (
+          {favoriteVisible ? (
             <Button
               style={{ background: "#00008B", color: "#FFFFFF" }}
               onClick={() => addToFavorites(book)}
             >
               Add Favorite
             </Button>
-          )}
-          {removeFavoriVisible && (
-            <Button
+          ):<Button
               style={{ background: "#00008B", color: "#FFFFFF" }}
               onClick={() => removeToFavorites(book.id)}
             >
               Remove Favorite
-            </Button>
-          )}
+            </Button>}
         </div>
       </Row>
     </Card>
@@ -120,7 +116,6 @@ BookCard.propTypes = {
   detailVisible: PropTypes.bool.isRequired,
   favoriteVisible: PropTypes.bool,
   addToFavorites: PropTypes.func,
-  removeFavoriVisible: PropTypes.bool,
   removeToFavorites: PropTypes.func,
 };
 
@@ -128,7 +123,6 @@ BookCard.defaultProps = {
   detailVisible: true,
   removeVisible: true,
   favoriteVisible: true,
-  removeFavoriVisible: false,
 };
 
 export default BookCard;
