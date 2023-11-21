@@ -8,30 +8,14 @@ import {
 } from "@ant-design/icons";
 import { Layout, Menu, Button, theme ,Input} from "antd";
 import Link from "next/link";
+import Search from "@/pages/search";
 const { Header, Sider, Content } = Layout;
 
-const BaseLayout = ({ children }) => {
+const BaseLayout = ({ children}) => {
   const [collapsed, setCollapsed] = useState(false);
-  const [searchResults, setSearchResults] = useState([]);
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
 
-  const handleSearch = async (query) => {
-    try {
-      const response = await fetch("http://localhost:3001/books");
-      if (!response.ok) {
-        throw new Error("Veriler alınırken hata oluştu.");
-      }
-  
-      const data = await response.json();
-      const filteredData = data.filter((book) =>
-        book.title.toLowerCase().includes(query.toLowerCase())
-      );
-      setSearchResults(filteredData);
-    } catch (error) {
-      console.error("Veriler alınırken hata oluştu.", error);
-    }
+  const handleSearch = (searchTerm) => {
+    console.log("Aranan kitap:", searchTerm);
   };
 
   return (
@@ -52,44 +36,15 @@ const BaseLayout = ({ children }) => {
         </Menu>
       </Sider>
       <Layout>
-        <Header
-          style={{
-            padding: 0,
-            background: colorBgContainer,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <div>
-            <Button
-              type="text"
-              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-              onClick={() => setCollapsed(!collapsed)}
-              style={{
-                fontSize: "16px",
-                width: 64,
-                height: 64,
- }}
-            />
-          </div>
-          <div>
-            <Input.Search
-              placeholder="Search Books"
-              onSearch={(value) => handleSearch(value)}
-              style={{ width: 200 }}
-            />
-          </div>
-        </Header>
-        <Content
+       
+        <Content 
           style={{
             margin: "24px 16px",
             padding: 24,
             minHeight: 280,
-            background: colorBgContainer,
           }}
         >
-          {React.cloneElement(children, { searchResults })}
+          {children}
         </Content>
       </Layout>
     </Layout>
