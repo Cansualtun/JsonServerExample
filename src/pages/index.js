@@ -43,6 +43,7 @@ export default function Home() {
     toast.success("Ürününüz silindi!");
   };
 
+  // search logic
   const handleSearch = async (searchTerm) => {
     setLoading(true);
     try {
@@ -72,7 +73,7 @@ export default function Home() {
       >
         <Search handleSearch={handleSearch} />
       </div>
-      <Row gutter={[16, 16]}>
+      <Row gutter={[5, 5]}>
         {loading
           ? renderSkeletons()
           : books.map((book) => (

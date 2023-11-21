@@ -72,15 +72,6 @@
   ],
   "favorites": [
     {
-      "id": 6,
-      "title": "The Catcher in the Rye",
-      "author": "J.D. Salinger",
-      "price": 10.99,
-      "currency": "USD",
-      "description": "A classic novel that explores themes of teenage angst and alienation through the eyes of protagonist Holden Caulfield.",
-      "imageUrl": "https://picsum.photos/id/240/200/300"
-    },
-    {
       "id": 8,
       "title": "Brave New World",
       "author": "Aldous Huxley",

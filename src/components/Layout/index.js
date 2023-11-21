@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
-import { Layout, Menu, Button, Input } from "antd";
+import { Layout, Menu, Button } from "antd";
 import Link from "next/link";
 const { Header, Sider, Content } = Layout;
 
@@ -8,25 +8,10 @@ const BaseLayout = ({ children }) => {
   const [collapsed, setCollapsed] = useState(false);
   const newColorBgContainer = "#73BA9B";
 
-  const handleSearch = async (query) => {
-    try {
-      const response = await fetch("http://localhost:3001/books");
-      if (!response.ok) {
-        throw new Error("Veriler alınırken hata oluştu.");
-      }
-
-      const data = await response.json();
-      const filteredData = data.filter((book) =>
-        book.title.toLowerCase().includes(query.toLowerCase())
-      );
-      setSearchResults(filteredData);
-    } catch (error) {
-      console.error("Veriler alınırken hata oluştu.", error);
-    }
-  };
-
   return (
-    <Layout style={{ minHeight: "100vh" }}>
+    <Layout
+      style={{ minHeight: "100vh", backgroundColor: newColorBgContainer }}
+    >
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="demo-logo-vertical" />
         <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
@@ -51,7 +36,6 @@ const BaseLayout = ({ children }) => {
         <Header
           style={{
             padding: 0,
-            background: newColorBgContainer,
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
@@ -60,6 +44,7 @@ const BaseLayout = ({ children }) => {
           <div>
             <Button
               type="text"
+              color="white"
               icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
               onClick={() => setCollapsed(!collapsed)}
               style={{

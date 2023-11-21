@@ -22,7 +22,6 @@ const LoginForm = () => {
     localStorage.setItem("email", values.email);
     localStorage.setItem("password", values.password);
     router.push("/");
-    console.log("Formunu başarıyla gönderildi");
   };
   return (
     <div
