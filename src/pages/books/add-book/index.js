@@ -7,6 +7,7 @@ import {
   addBookFormInitialValue,
   addBookValidationSchema,
 } from "@/validations/addBook";
+import { toast } from "react-toastify";
 
 const { Title } = Typography;
 
@@ -21,6 +22,7 @@ const AddBook = () => {
       try {
         await axios.post("http://localhost:3001/books", book);
         router.push("/");
+        toast.success("Ürün başarıyla eklendi!");
       } catch (error) {
         console.error("Kitap eklenirken bir hata oluştu", error);
       } finally {
@@ -112,7 +114,7 @@ const AddBook = () => {
             type="primary"
             htmlType="submit"
             loading={formik.isSubmitting}
-            style={{ backgroundColor: '#003E1F' }}
+            style={{ backgroundColor: "#003E1F" }}
           >
             Add Book
           </Button>

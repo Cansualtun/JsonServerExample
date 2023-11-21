@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import { deleteBook, fetchBooks , searchBooks} from "./api/hello";
+import { deleteBook, fetchBooks, searchBooks } from "./api/hello";
 import { Row, Col } from "antd";
 import BookCard from "@/components/Card";
 import BookCardSkeleton from "@/components/Card/skeleton";
 import { useRouter } from "next/router";
 import Search from "./search";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 export default function Home() {
   const [books, setBooks] = useState([]);
@@ -26,7 +28,6 @@ export default function Home() {
     getBooks();
   }, []);
 
-  
   // Apiden dönen data kadar skeleton dönmesi için
   const renderSkeletons = () => {
     return Array.from({ length: 20 }, (_, index) => (
@@ -39,6 +40,7 @@ export default function Home() {
   const handleDelete = async (id) => {
     await deleteBook(id);
     setBooks(books.filter((book) => book.id !== id));
+    toast.success("Ürününüz silindi!");
   };
 
   const handleSearch = async (searchTerm) => {
@@ -51,13 +53,25 @@ export default function Home() {
     }
     setLoading(false);
   };
+
+  // favorilere eklemek için
+  const addToFavorites = async (book) => {
+    try {
+      await axios.post("http://localhost:3001/favorites", book);
+      toast.success("Kitabınız başarıyla favorilere eklendi!");
+    } catch (error) {
+      console.error("Favorilere eklerken hata alındı", error);
+    }
+  };
   return (
-    <div> 
-      <div  style={{
-      margin: "16px 8px",
-    }}>
-       <Search handleSearch={handleSearch} />
-    </div>
+    <div>
+      <div
+        style={{
+          margin: "16px 8px",
+        }}
+      >
+        <Search handleSearch={handleSearch} />
+      </div>
       <Row gutter={[16, 16]}>
         {loading
           ? renderSkeletons()
@@ -67,11 +81,12 @@ export default function Home() {
                   book={book}
                   detail={() => router.push(`books/${book.id}`)}
                   update={() => router.push(`/books/update-book/${book.id}`)}
-                  handleDelete={() => handleDelete(book.id)}
+                  remove={() => handleDelete(book.id)}
+                  addToFavorites={addToFavorites}
                 />
               </Col>
             ))}
       </Row>
     </div>
   );
-} 
+}
