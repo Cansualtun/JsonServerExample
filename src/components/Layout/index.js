@@ -1,19 +1,12 @@
 import React, { useState } from "react";
-import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from "@ant-design/icons";
-import { Layout, Menu, Button, theme ,Input} from "antd";
+import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
+import { Layout, Menu, Button, Input } from "antd";
 import Link from "next/link";
-import Search from "@/pages/search";
 const { Header, Sider, Content } = Layout;
 
-const BaseLayout = ({ children}) => {
+const BaseLayout = ({ children }) => {
   const [collapsed, setCollapsed] = useState(false);
-  const newColorBgContainer = '#73BA9B'  
+  const newColorBgContainer = "#73BA9B";
 
   const handleSearch = async (query) => {
     try {
@@ -21,7 +14,7 @@ const BaseLayout = ({ children}) => {
       if (!response.ok) {
         throw new Error("Veriler alınırken hata oluştu.");
       }
-  
+
       const data = await response.json();
       const filteredData = data.filter((book) =>
         book.title.toLowerCase().includes(query.toLowerCase())
@@ -36,8 +29,8 @@ const BaseLayout = ({ children}) => {
     <Layout style={{ minHeight: "100vh" }}>
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="demo-logo-vertical" />
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]} >
-          <Menu.Item key="1" >
+        <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
+          <Menu.Item key="1">
             <Link href="/">
               <p>Home</p>
             </Link>
@@ -53,7 +46,7 @@ const BaseLayout = ({ children}) => {
         <Header
           style={{
             padding: 0,
-            background: colorBgContainer,
+            background: newColorBgContainer,
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
@@ -68,14 +61,7 @@ const BaseLayout = ({ children}) => {
                 fontSize: "16px",
                 width: 64,
                 height: 64,
- }}
-            />
-          </div>
-          <div style={{ marginTop: '30px' }}>
-            <Input.Search
-              placeholder="Search Books"
-              onSearch={(value) => handleSearch(value)}
-              style={{ width: 200 }}
+              }}
             />
           </div>
         </Header>
