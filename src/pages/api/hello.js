@@ -27,4 +27,9 @@ export const deleteBook = async (id) => {
 export const updateBook=async(id,updatedBook)=>{
   const response=await axiosInstance.put(`${id}`,updatedBook);
   return response.data;
-}
+};
+
+export const searchBooks = async (query) => {
+  const response = await axiosInstance.get(`http://localhost:3001/books?q=${query}`);
+  return response.data;
+};

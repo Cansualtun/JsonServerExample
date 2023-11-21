@@ -8,18 +8,12 @@ import {
 } from "@ant-design/icons";
 import { Layout, Menu, Button, theme ,Input} from "antd";
 import Link from "next/link";
+import Search from "@/pages/search";
 const { Header, Sider, Content } = Layout;
 
-const BaseLayout = ({ children }) => {
+const BaseLayout = ({ children}) => {
   const [collapsed, setCollapsed] = useState(false);
-  const [searchResults, setSearchResults] = useState([]);
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
-
-  const newColorBgContainer = '#73BA9B'
-  
-  
+  const newColorBgContainer = '#73BA9B'  
 
   const handleSearch = async (query) => {
     try {
@@ -90,10 +84,9 @@ const BaseLayout = ({ children }) => {
             margin: "24px 16px",
             padding: 24,
             minHeight: 280,
-            background: colorBgContainer,
           }}
         >
-          {React.cloneElement(children, { searchResults })}
+          {children}
         </Content>
       </Layout>
     </Layout>
