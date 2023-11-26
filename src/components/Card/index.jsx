@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, Button } from "antd";
 import { bookPropTypes, bookDefaultProps } from "./propType";
+import { useState } from "react";
 
 const { Meta } = Card;
 
@@ -15,6 +16,17 @@ const BookCard = ({
   addToFavorites,
   removeToFavorites,
 }) => {
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  const handleAddToFavorites = () => {
+    addToFavorites(book);
+    setIsFavorite(true);
+  };
+
+  const handleRemoveFromFavorites = () => {
+    removeToFavorites(book.id);
+    setIsFavorite(false);
+  };
   return (
     <Card
       hoverable
@@ -83,14 +95,17 @@ const BookCard = ({
         {favoriteVisible ? (
           <Button
             style={{
-              background: "#00008B",
+              background: isFavorite ? "#808080" : "#00008B",
               color: "#FFFFFF",
               marginBottom: "8px",
             }}
-            onClick={() => addToFavorites(book)}
+            onClick={
+              isFavorite ? handleRemoveFromFavorites : handleAddToFavorites
+            }
             size="large"
+            disabled={isFavorite}
           >
-            Add Favorite
+            {isFavorite ? "Add Favorite" : "Add Favorite"}
           </Button>
         ) : (
           <Button
