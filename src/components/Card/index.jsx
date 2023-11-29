@@ -27,6 +27,7 @@ const BookCard = ({
     removeToFavorites(book.id);
     setIsFavorite(false);
   };
+
   return (
     <Card
       hoverable
@@ -34,14 +35,15 @@ const BookCard = ({
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        width: 400,
-        height: "100vh",
+        width: 350,
+        maxHeight: "100vh",
+        overflow: "auto", 
       }}
     >
       <img
         alt={book.title}
         src={book.imageUrl}
-        style={{ width: "100%", flex: "1" }}
+        style={{ width: "100%", height: "auto", maxHeight: "300px", flexShrink: 0 }}  
       />
       <div>
         <Meta title={book.title} description={book.description} />
@@ -105,7 +107,7 @@ const BookCard = ({
             size="large"
             disabled={isFavorite}
           >
-            {isFavorite ? "Add Favorite" : "Add Favorite"}
+            {isFavorite ? "Remove Favorite" : "Add Favorite"}
           </Button>
         ) : (
           <Button

@@ -1,47 +1,55 @@
 import React, { useState } from "react";
-import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
+import {
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
+  BookOutlined,
+  HomeOutlined,
+  StarOutlined,
+} from "@ant-design/icons";
 import { Layout, Menu, Button } from "antd";
 import Link from "next/link";
+import styles from "./BaseLayout.module.css";
+
 const { Header, Sider, Content } = Layout;
 
 const BaseLayout = ({ children }) => {
   const [collapsed, setCollapsed] = useState(false);
-  const newColorBgContainer = "#73BA9B";
 
   return (
-    <Layout
-      style={{ minHeight: "100vh", backgroundColor: newColorBgContainer }}
-    >
-      <Sider trigger={null} collapsible collapsed={collapsed}>
-        <div className="demo-logo-vertical" />
+    <Layout className={styles.layout}>
+      <Sider
+        trigger={null}
+        collapsible
+        collapsed={collapsed}
+        className={styles.sider}
+      >
         <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
-          <Menu.Item key="1">
-            <Link href="/">
-              <p>Home</p>
-            </Link>
+          <Menu.Item key="1" icon={<HomeOutlined />}>
+            {!collapsed && (
+              <Link href="/">
+                <p>Home</p>
+              </Link>
+            )}
           </Menu.Item>
-          <Menu.Item key="2">
-            <Link href="/books/add-book">
-              <p>Add Book</p>
-            </Link>
+          <Menu.Item key="2" icon={<BookOutlined />}>
+            {!collapsed && (
+              <Link href="/books/add-book">
+                <p>Add Book</p>
+              </Link>
+            )}
           </Menu.Item>
-          <Menu.Item key="3">
-            <Link href="/favorites">
-              <p>Favorites</p>
-            </Link>
+          <Menu.Item key="3" icon={<StarOutlined />}>
+            {!collapsed && (
+              <Link href="/favorites">
+                <p>Favorites</p>
+              </Link>
+            )}
           </Menu.Item>
         </Menu>
       </Sider>
       <Layout>
-        <Header
-          style={{
-            padding: 0,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <div>
+        <Header className={styles.header}>
+          <div className={styles.headerContent}>
             <Button
               type="text"
               color="white"
@@ -51,21 +59,29 @@ const BaseLayout = ({ children }) => {
                 fontSize: "16px",
                 width: 64,
                 height: 64,
+                color: "white",
               }}
             />
+            <div className={styles.logoContainer}>
+              <BookOutlined style={{ color: "white", fontSize: "20px" }} />
+              {!collapsed && (
+                <p
+                  style={{
+                    color: "white",
+                    fontWeight: "bold",
+                    fontSize: "20px",
+                  }}
+                >
+                  Book App
+                </p>
+              )}
+            </div>
           </div>
         </Header>
-        <Content
-          style={{
-            margin: "24px 16px",
-            padding: 24,
-            minHeight: 280,
-          }}
-        >
-          {children}
-        </Content>
+        <Content className={styles.content}>{children}</Content>
       </Layout>
     </Layout>
   );
 };
+
 export default BaseLayout;
