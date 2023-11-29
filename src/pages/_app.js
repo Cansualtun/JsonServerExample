@@ -5,6 +5,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Provider } from "react-redux";
 import { store } from "@/store";
+import Head from "next/head";
 
 export default function App({ Component, pageProps }) {
   const [searchQuery, setSearchQuery] = useState("");
@@ -15,6 +16,10 @@ export default function App({ Component, pageProps }) {
 
   return (
     <Provider store={store}>
+      {/* Global title */}
+      <Head>
+        <title>Book App</title>
+      </Head>
       <BaseLayout handleSearch={handleSearch}>
         <ToastContainer />
         <Component {...pageProps} searchQuery={searchQuery} />
