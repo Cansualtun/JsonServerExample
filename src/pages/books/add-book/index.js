@@ -2,7 +2,6 @@ import { Typography, Form, Input, Button, Select } from "antd";
 import { useFormik } from "formik";
 import { useRouter } from "next/router";
 import axios from "axios";
-import { Option } from "antd/es/mentions";
 import {
   addBookFormInitialValue,
   addBookValidationSchema,
@@ -81,17 +80,6 @@ const AddBook = () => {
             value={formik.values.price}
             onChange={formik.handleChange}
           />
-        </Form.Item>
-        <Form.Item>
-          <Select
-            placeholder="Select an option"
-            value={formik.values.currency}
-            onChange={(value) => formik.setFieldValue("currency", value)}
-          >
-            <Option value="TL">TL</Option>
-            <Option value="USD">USD</Option>
-            <Option value="EUR">EUR</Option>
-          </Select>
         </Form.Item>
         <Form.Item name="description">
           <Input

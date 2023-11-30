@@ -68,6 +68,15 @@
       "description": "deneme",
       "imageUrl": "https://picsum.photos/id/237/200/300",
       "id": 15
+    },
+    {
+      "title": "zxczxc",
+      "author": "xczxcxz",
+      "price": 123,
+      "currency": "",
+      "description": "dssd",
+      "imageUrl": "dfdsfd",
+      "id": 16
     }
   ],
   "favorites": [

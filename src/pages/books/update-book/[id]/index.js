@@ -1,13 +1,12 @@
-import { Typography, Form, Input, Button, Select } from "antd";
+import { Typography, Form, Input, Button } from "antd";
 import { useFormik } from "formik";
 import { useRouter } from "next/router";
-
 import axios from "axios";
 import {
   updateBookFormInitialValue,
   updateBookValidationSchema,
 } from "@/validations/updateBook";
-import { Option } from "antd/es/mentions";
+
 const { Title } = Typography;
 
 const UpdateBook = () => {
@@ -57,17 +56,6 @@ const UpdateBook = () => {
             value={formik.values.author}
             onChange={formik.handleChange}
           />
-        </Form.Item>
-        <Form.Item name="currency">
-          <Select
-            placeholder="Select an option"
-            value={formik.values.currency}
-            onChange={(value) => formik.setFieldValue("currency", value)}
-          >
-            <Option value="TL">TL</Option>
-            <Option value="USD">USD</Option>
-            <Option value="EUR">EUR</Option>
-          </Select>
         </Form.Item>
         <Form.Item name="price">
           <Input
