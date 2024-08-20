@@ -25,10 +25,15 @@ export default function Home() {
   };
 
   useEffect(() => {
-    getBooks();
+    axios.get('/api/data')
+      .then((response) => {
+        setBooks(response.data.books);
+      })
+      .catch((error) => {
+        console.error("API isteği sırasında bir hata oluştu:", error);
+      });
   }, []);
 
-  // Apiden dönen data kadar skeleton dönmesi için
   const renderSkeletons = () => {
     return Array.from({ length: 20 }, (_, index) => (
       <Col key={index}>
@@ -36,7 +41,7 @@ export default function Home() {
       </Col>
     ));
   };
-  // Kitabı silmek için çalıştırdığımız fonksiyon
+  
   const handleDelete = async (id) => {
     await deleteBook(id);
     setBooks(books.filter((book) => book.id !== id));
